@@ -1,18 +1,23 @@
 package fr.amu.iut.exercice5;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class JeuMain extends Application {
 
     private Scene scene;
     private BorderPane root;
-    private Timeline gameTimer;
     @Override
     public void start(Stage primaryStage) {
 
@@ -33,7 +38,7 @@ public class JeuMain extends Application {
         root.setCenter(jeu);
         //on construit une scene 640 * 480 pixels
         scene = new Scene(root);
-
+        int secondsPassed = 0;
         //Gestion du déplacement du personnage
         deplacer(pacman, fantome,mur);
 
@@ -42,7 +47,6 @@ public class JeuMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 
     /**
      * Permet de gérer les événements de type clavier, pression des touches

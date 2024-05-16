@@ -50,7 +50,7 @@ public class Palette extends Application {
         bottom.getChildren().addAll(vert,bleu,rouge);
         root.setBottom(bottom);
         this.label=new Label();
-        label.setAlignment( Pos.CENTER );
+        this.label.setAlignment( Pos.CENTER );
 
         vert.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
             this.nbVert=this.nbVert+1;
@@ -62,6 +62,7 @@ public class Palette extends Application {
             this.nbBleu=this.nbBleu+1;
             panneau.setStyle("-fx-background-color: #0000FF; -fx-text-fill: white;");
             this.label.setText("Bleu choisi "+this.nbBleu+" fois");
+
         });
         rouge.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
             this.nbRouge=this.nbRouge+1;
