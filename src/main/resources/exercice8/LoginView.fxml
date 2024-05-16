@@ -18,7 +18,8 @@
     <PasswordField fx:id="pwd" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
 <!--  à compléter pour les boutons -->
-
+   <Button fx:id="ok"  text="Ok" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+   <Button fx:id="Cancel"  text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
    <columnConstraints>
       <ColumnConstraints maxWidth="103.0" minWidth="63.0" prefWidth="83.0" />
       <ColumnConstraints maxWidth="143.0" minWidth="103.0" prefWidth="123.0" />
