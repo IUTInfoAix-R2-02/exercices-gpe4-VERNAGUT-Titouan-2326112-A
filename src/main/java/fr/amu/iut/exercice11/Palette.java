@@ -1,4 +1,4 @@
-package fr.amu.iut.exercice1;
+package fr.amu.iut.exercice11;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -58,11 +59,41 @@ public class Palette extends Application {
         bleu = new Button("Bleu");
 
         /* VOTRE CODE ICI */
+        this.texteDuHaut=new Label();
+        this.texteDuHaut.setAlignment( Pos.CENTER );
+
+        vert.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            this.nbVert=this.nbVert+1;
+            panneau.setStyle("-fx-background-color: #00FF00; -fx-text-fill: white;");
+            this.texteDuHaut.setText("Vert choisi "+this.nbVert+" fois");
+            this.texteDuBas.setText("le vert est un joli couleur!");
+            this.texteDuBas.setStyle("-fx-text-fill: green;");
+
+        });
+        bleu.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            this.nbBleu=this.nbBleu+1;
+            panneau.setStyle("-fx-background-color: #0000FF; -fx-text-fill: white;");
+            this.texteDuHaut.setText("Bleu choisi "+this.nbBleu+" fois");
+            this.texteDuBas.setText("le rouge est un joli couleur!");
+            this.texteDuBas.setStyle("-fx-text-fill: red;");
+
+        });
+        rouge.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            this.nbRouge=this.nbRouge+1;
+            panneau.setStyle("-fx-background-color: #FF0000; -fx-text-fill: white;");
+            this.texteDuHaut.setText("Rouge choisi "+this.nbRouge+" fois");
+
+
+        });
+
+
+
 
         boutons.getChildren().addAll(vert, rouge, bleu);
 
         root.setCenter(panneau);
         root.setTop(texteDuHaut);
+
         root.setBottom(bas);
 
         Scene scene = new Scene(root);
