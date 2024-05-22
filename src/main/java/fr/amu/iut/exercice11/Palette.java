@@ -66,7 +66,7 @@ public class Palette extends Application {
             this.nbVert=this.nbVert+1;
             panneau.setStyle("-fx-background-color: #00FF00; -fx-text-fill: white;");
             this.texteDuHaut.setText("Vert choisi "+this.nbVert+" fois");
-            this.texteDuBas.setText("le vert est un joli couleur!");
+            this.texteDuBas.setText("le vert est une joli couleur!");
             this.texteDuBas.setStyle("-fx-text-fill: green;");
 
         });
@@ -74,15 +74,16 @@ public class Palette extends Application {
             this.nbBleu=this.nbBleu+1;
             panneau.setStyle("-fx-background-color: #0000FF; -fx-text-fill: white;");
             this.texteDuHaut.setText("Bleu choisi "+this.nbBleu+" fois");
-            this.texteDuBas.setText("le rouge est un joli couleur!");
-            this.texteDuBas.setStyle("-fx-text-fill: red;");
+            this.texteDuBas.setText("le bleu est une joli couleur!");
+            this.texteDuBas.setStyle("-fx-text-fill: blue;");
 
         });
         rouge.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
             this.nbRouge=this.nbRouge+1;
             panneau.setStyle("-fx-background-color: #FF0000; -fx-text-fill: white;");
             this.texteDuHaut.setText("Rouge choisi "+this.nbRouge+" fois");
-
+            this.texteDuBas.setText("le rouge est une joli couleur!");
+            this.texteDuBas.setStyle("-fx-text-fill: red;");
 
         });
 
