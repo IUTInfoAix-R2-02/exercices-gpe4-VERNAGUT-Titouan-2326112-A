@@ -14,6 +14,7 @@ public class LoginControl extends GridPane {
 
     private void createBindings() {
         // MÉTHODE À COMPLÉTER
+
     }
 
     @FXML
