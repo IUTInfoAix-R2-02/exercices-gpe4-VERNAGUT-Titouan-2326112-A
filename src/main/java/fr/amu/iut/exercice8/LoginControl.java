@@ -9,21 +9,23 @@ import javafx.scene.control.Label;
 
 public class LoginControl extends GridPane {
     @FXML
-    private TextField idd;
+    private TextField userId;
 
     @FXML
     private PasswordField pwd;
 
+    @FXML
     private void okClicked() {
-        String username = idd.getText();
-        String password = pwd.getText();
-        String maskedPassword = "*".repeat(password.length());
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + maskedPassword);
+        System.out.print(userId.getText() + " ");
+        for (char c : pwd.getText().toCharArray()) {
+            System.out.print("*");
+        }
+        System.out.println();
     }
 
+    @FXML
     private void cancelClicked() {
-        idd.clear();
-        pwd.clear();
+        userId.setText("");
+        pwd.setText("");
     }
 }
