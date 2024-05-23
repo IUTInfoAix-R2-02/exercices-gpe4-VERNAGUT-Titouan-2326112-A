@@ -16,34 +16,43 @@ public class LoginControl extends GridPane {
 
     @FXML
     private PasswordField pwd;
+
     @FXML
-    private Button okButton;
+    private Button cancelBtn;
+
     @FXML
-    private Button cancelButton;
+    private Button okBtn;
+
+    @FXML
+    private void initialize() {
+        createBindings();
+    }
 
     private void createBindings() {
+        // Password field is not editable if userId is less than 6 characters
         pwd.editableProperty().bind(Bindings.createBooleanBinding(
                 () -> userId.getText().length() >= 6,
                 userId.textProperty()
         ));
-        cancelButton.disableProperty().bind(Bindings.createBooleanBinding(
-                () -> userId.getText().isEmpty() && pwd.getText().isEmpty(),
-                userId.textProperty(),
-                pwd.textProperty()
-        ));
-        Pattern uppercasePattern = Pattern.compile(".*[A-Z].*");
-        Pattern digitPattern = Pattern.compile(".*[0-9].*");
 
-        BooleanBinding passwordValidBinding = Bindings.createBooleanBinding(
-                () -> pwd.getText().length() >= 8 &&
-                        uppercasePattern.matcher(pwd.getText()).matches() &&
-                        digitPattern.matcher(pwd.getText()).matches(),
+        // Cancel button is not clickable if both fields are empty
+        cancelBtn.disableProperty().bind(Bindings.createBooleanBinding(
+                () -> userId.getText().isEmpty() && pwd.getText().isEmpty(),
+                userId.textProperty(), pwd.textProperty()
+        ));
+
+        // OK button is not clickable if password doesn't meet the criteria
+        BooleanBinding validPasswordBinding = Bindings.createBooleanBinding(
+                () -> {
+                    String password = pwd.getText();
+                    return password.length() >= 8 &&
+                            Pattern.compile("[A-Z]").matcher(password).find() &&
+                            Pattern.compile("[0-9]").matcher(password).find();
+                },
                 pwd.textProperty()
         );
 
-        okButton.disableProperty().bind(passwordValidBinding.not());
-
-
+        okBtn.disableProperty().bind(validPasswordBinding.not());
     }
 
     @FXML
@@ -60,6 +69,4 @@ public class LoginControl extends GridPane {
         userId.setText("");
         pwd.setText("");
     }
-
-
 }
